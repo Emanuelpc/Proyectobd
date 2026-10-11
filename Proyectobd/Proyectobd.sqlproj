@@ -71,7 +71,7 @@
     <Build Include="dbo\Tables\Suppliers.sql" />
     <Build Include="dbo\Tables\Orders.sql" />
     <Build Include="dbo\Tables\Products.sql" />
-    <Build Include="dbo\Tables\OrderDetails.sql" />
+    <Build Include="dbo\Tables\Order Details.sql" />
     <Build Include="dbo\Tables\CustomerCustomerDemo.sql" />
     <Build Include="dbo\Tables\CustomerDemographics.sql" />
     <Build Include="dbo\Tables\Region.sql" />

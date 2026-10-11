@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[OrderDetails] (
+﻿CREATE TABLE [dbo].[Order Details] (
     [OrderID]    INT        NOT NULL,
     [ProductID]  INT        NOT NULL,
     [UnitPrice]  MONEY      CONSTRAINT [DF_Order_Details_UnitPrice] DEFAULT ((0)) NOT NULL,
@@ -12,24 +12,19 @@
     CONSTRAINT [FK_Order_Details_Orders] FOREIGN KEY ([OrderID]) REFERENCES [dbo].[Orders] ([OrderID]),
     CONSTRAINT [FK_Order_Details_Products] FOREIGN KEY ([ProductID]) REFERENCES [dbo].[Products] ([ProductID])
 );
-
-
 GO
+
 CREATE NONCLUSTERED INDEX [OrderID]
-    ON [dbo].[OrderDetails]([OrderID] ASC);
-
-
+    ON [dbo].[Order Details]([OrderID] ASC);
 GO
+
 CREATE NONCLUSTERED INDEX [OrdersOrder_Details]
-    ON [dbo].[OrderDetails]([OrderID] ASC);
-
-
+    ON [dbo].[Order Details]([OrderID] ASC);
 GO
+
 CREATE NONCLUSTERED INDEX [ProductID]
-    ON [dbo].[OrderDetails]([ProductID] ASC);
-
-
+    ON [dbo].[Order Details]([ProductID] ASC);
 GO
-CREATE NONCLUSTERED INDEX [ProductsOrder_Details]
-    ON [dbo].[OrderDetails]([ProductID] ASC);
 
+CREATE NONCLUSTERED INDEX [ProductsOrder_Details]
+    ON [dbo].[Order Details]([ProductID] ASC);
