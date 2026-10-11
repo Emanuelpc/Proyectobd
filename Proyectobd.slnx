@@ -1,5 +1,9 @@
 <Solution>
-  <Project Path="Proyectobd/Proyectobd.sqlproj">
+  <Project Path="NorthWind_Modelo_Estrella/NorthWind_Modelo_Estrella.sqlproj" Id="0e1c911c-3102-454d-ac41-843bde494627">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="Proyectobd/Proyectobd.sqlproj" Id="b97db3cd-f437-4910-b266-5df3ad9aa31d">
     <Build />
     <Deploy />
   </Project>
