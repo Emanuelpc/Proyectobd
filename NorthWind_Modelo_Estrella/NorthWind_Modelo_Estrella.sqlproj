@@ -62,5 +62,7 @@
   <ItemGroup>
     <Build Include="dbo\Tables\Dim_Cliente.sql" />
     <Build Include="dbo\Tables\Dim_Producto.sql" />
+    <Build Include="dbo\Tables\Dim_Empleado.sql" />
+    <Build Include="dbo\Tables\Dim_Proveedor.sql" />
   </ItemGroup>
 </Project>
