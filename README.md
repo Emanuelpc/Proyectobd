@@ -9,7 +9,7 @@
 | 1 | Emanuel Vladimir Peredo Claros | 202001829 | Emanuelpc |
 | 2 | Amadeo Diego Siles Revilla | 202103893 | amadeosilesing |
 | 3 | Brenda Calizaya Antezana | 202105268 | BrendaCali |
-| 4 | Ever Blanco Vela | 202103777 | - |
+| 4 | Ever Blanco Vela | 202103777 | EverBlancoVela |
 
 ## Descripción
 
