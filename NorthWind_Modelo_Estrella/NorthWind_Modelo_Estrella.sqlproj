@@ -60,11 +60,12 @@
     <Folder Include="dbo\Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\Dim_Cliente.sql" />
-    <Build Include="dbo\Tables\Dim_Producto.sql" />
-    <Build Include="dbo\Tables\Dim_Empleado.sql" />
-    <Build Include="dbo\Tables\Dim_Proveedor.sql" />
-    <Build Include="dbo\Tables\Dim_Tiempo.sql" />
-    <Build Include="dbo\Tables\Fact_Ventas.sql" />
+    <Build Include="dbo\Tables\DimCustomer.sql" />
+    <Build Include="dbo\Tables\DimEmployee.sql" />
+    <Build Include="dbo\Tables\DimProduct.sql" />
+    <Build Include="dbo\Tables\DimTerritoryRegion.sql" />
+    <Build Include="dbo\Tables\DimShipper.sql" />
+    <Build Include="dbo\Tables\DimDate.sql" />
+    <Build Include="dbo\Tables\FactSales.sql" />
   </ItemGroup>
 </Project>
