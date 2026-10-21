@@ -1,9 +1,20 @@
 <Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Development" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="NorthWind_ETL/NorthWind_ETL.dtproj" Type="c9674dcb-5085-4a16-b785-4c70dd1589bd">
+    <BuildType Project="Development" />
+    <Platform Project="?" />
+  </Project>
   <Project Path="NorthWind_Modelo_Estrella/NorthWind_Modelo_Estrella.sqlproj" Id="0e1c911c-3102-454d-ac41-843bde494627">
+    <BuildType Solution="Development|*" Project="Release" />
     <Build />
     <Deploy />
   </Project>
   <Project Path="Proyectobd/Proyectobd.sqlproj" Id="b97db3cd-f437-4910-b266-5df3ad9aa31d">
+    <BuildType Solution="Development|*" Project="Release" />
     <Build />
     <Deploy />
   </Project>
