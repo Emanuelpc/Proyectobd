@@ -11,8 +11,8 @@
   DTS:LocaleID="16394"
   DTS:ObjectName="Customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{B8DE840D-3729-44A4-8FFB-39C5D7D6705E}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{28F37FA0-D123-4935-99D3-5E8B1C93EB2A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1063,11 +1063,19 @@ where [refTable].[CustomerID] = ?</property>
         <NodeLayout
           Size="153.6,41.6"
           Id="Package\Load Customers"
-          TopLeft="167.857143214467,367.823529089353" />
+          TopLeft="200.000000425748,337.235293822047" />
         <NodeLayout
           Size="157.6,41.6"
           Id="Package\Staging clean-up"
-          TopLeft="176.428571804142,270.705882115657" />
+          TopLeft="191.428571836073,246.999999783495" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Sync Dim Customer"
+          TopLeft="190.00000040446,422.882352570503" />
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\Update Package config"
+          TopLeft="184.28571467801,493.235293685307" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="269.471428956882,105.07058817966">
@@ -1092,30 +1100,18 @@ where [refTable].[CustomerID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="266.914286088335,204.482352798404">
+          TopLeft="268.571428962204,204.482352798404">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-11.685714284193,66.223529317253"
+              EndConnector="0,42.517646985091"
               Start="0,0"
-              End="-11.685714284193,58.723529317253">
+              End="0,35.017646985091">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.1117646586265" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.1117646586265"
-                    Point2="0,33.1117646586265"
-                    Point3="-4,33.1117646586265" />
-                  <mssgle:LineSegment
-                    End="-7.68571428419301,33.1117646586265" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-7.68571428419301,33.1117646586265"
-                    Point2="-11.685714284193,33.1117646586265"
-                    Point3="-11.685714284193,37.1117646586265" />
-                  <mssgle:LineSegment
-                    End="-11.685714284193,58.723529317253" />
+                    End="0,35.017646985091" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1126,30 +1122,18 @@ where [refTable].[CustomerID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="255.228571804142,312.305882115657">
+          TopLeft="273.51428613091,288.599999783495">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-10.571428589675,55.5176469736959"
+              EndConnector="0,48.635294038552"
               Start="0,0"
-              End="-10.571428589675,48.0176469736959">
+              End="0,41.135294038552">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.758823486848" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.758823486848"
-                    Point2="0,27.758823486848"
-                    Point3="-4,27.758823486848" />
-                  <mssgle:LineSegment
-                    End="-6.57142858967501,27.758823486848" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-6.57142858967501,27.758823486848"
-                    Point2="-10.571428589675,27.758823486848"
-                    Point3="-10.571428589675,31.758823486848" />
-                  <mssgle:LineSegment
-                    End="-10.571428589675,48.0176469736959" />
+                    End="0,41.135294038552" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1158,24 +1142,20 @@ where [refTable].[CustomerID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Sync Dim Customer"
-          TopLeft="163.571428919629,449.647058429396" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
-          TopLeft="246.714286067048,409.423529089353">
+          TopLeft="276.000000415104,378.835293822047">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,40.2235293400431"
+              EndConnector="0,44.0470587484563"
               Start="0,0"
-              End="0,32.7235293400431">
+              End="0,36.5470587484563">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.7235293400431" />
+                    End="0,36.5470587484563" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1184,24 +1164,20 @@ where [refTable].[CustomerID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="178.4,41.6"
-          Id="Package\Update Package config"
-          TopLeft="159.285714624792,515.411764254104" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 4]"
-          TopLeft="248.62857177221,491.247058429396">
+          TopLeft="274.342857541235,464.482352570503">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,24.1647058247079"
+              EndConnector="0,28.7529411148038"
               Start="0,0"
-              End="0,16.6647058247079">
+              End="0,21.2529411148038">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.6647058247079" />
+                    End="0,21.2529411148038" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1344,20 +1320,12 @@ where [refTable].[CustomerID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Customers\Get Rows From Customer">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Load Customers\Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1367,7 +1335,7 @@ where [refTable].[CustomerID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1384,6 +1352,14 @@ where [refTable].[CustomerID] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Customers\Get Rows From Customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
