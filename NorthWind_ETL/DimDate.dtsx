@@ -1,0 +1,84 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2026 7:25:59 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="EMANUELLAPTOP"
+  DTS:CreatorName="EMANUELLAPTOP\emanu"
+  DTS:DTSID="{9D12F584-2EBF-40AE-AAED-385A734A46B7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="DimDate"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{6AA4533B-FD8B-40FD-8943-1597009441CC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Source.NorthWind]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A635E59D-26C7-431E-885D-F26CFCB24C5B}"
+      DTS:ObjectName="Source.NorthWind">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=EMANUELLAPTOP;Initial Catalog=NorthWind;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-DimDate-{A635E59D-26C7-431E-885D-F26CFCB24C5B}EMANUELLAPTOP.NorthWind;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8D3E350F-D101-479B-875F-7984E06C9679}"
+      DTS:ObjectName="Target.NorthWind_Modelo_Estrella">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=EMANUELLAPTOP;Initial Catalog=NorthWind_Modelo_Estrella;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-DimDate-{8D3E350F-D101-479B-875F-7984E06C9679}EMANUELLAPTOP.NorthWind_Modelo_Estrella;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Populate DimDate"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2DF1388B-A7BA-4182-85DE-3A8095AD6A46}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Populate DimDate"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8D3E350F-D101-479B-875F-7984E06C9679}"
+          SQLTask:SqlStatementSource="-- Rango de fechas basado en el periodo de transacciones de NorthWind (1996 a 1998 / ajustable)&#xA;DECLARE @StartDate DATETIME = '1996-01-01';&#xA;DECLARE @EndDate DATETIME = '1998-12-31';&#xA;&#xA;WHILE @StartDate &lt;= @EndDate&#xA;BEGIN&#xA;    IF NOT EXISTS (SELECT 1 FROM dbo.DimDate WHERE FullDate = @StartDate)&#xA;    BEGIN&#xA;        INSERT INTO dbo.DimDate (&#xA;            DateKey, &#xA;            FullDate, &#xA;            CalendarYear, &#xA;            CalendarQuarter, &#xA;            MonthNumberOfYear, &#xA;            EnglishMonthName&#xA;        )&#xA;        VALUES (&#xA;            CAST(FORMAT(@StartDate, 'yyyyMMdd') AS INT), -- Ejemplo: 19960101&#xA;            @StartDate,&#xA;            YEAR(@StartDate),&#xA;            DATEPART(QUARTER, @StartDate),&#xA;            MONTH(@StartDate),&#xA;            DATENAME(MONTH, @StartDate)&#xA;        );&#xA;    END&#xA;    SET @StartDate = DATEADD(dd, 1, @StartDate);&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Populate DimDate"
+          TopLeft="274.166651686861,88.3999993852774" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
