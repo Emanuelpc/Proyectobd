@@ -26,26 +26,26 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">EMANUELLAPTOP</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMjYclw1ym0aEw/PG1x1FJAAAAAACAAAAAAAQZgAAAAEAACAAAABnYsiRkhS/Va3Gw7LVoon1w/oQw30Qkfu6GBUNCMklTAAAAAAOgAAAAAIAACAAAACc7QJhDoZTQtcR9IrJrAN99FOjLWQ1LSNMXhftuiaKxJAAAACHO9FbcEV4IScHKksHIZmN2R1/En3fI8QcTxHi2yjuVFtpXgm3mE34J4AHclQLVAl4EaOn3V95K5rKrWkYhYE0vJ5c6QLFp7prRBQICJouAx8Irqkaag+0gNcjwqFlwfzplYVNK4okVYIIQMu1Ow7ge/Rc9lO/Cq/41npXn6II4otCcyesrH6yoWnMAJlvXaVAAAAA7gM7avgNef4iszv0En+1N/DZ0ixAXpQ9ZcNAJoI3GCM/rbz9FEOiGY1AfBPwJ57nw8QSEA8qCR/pzUW/s+5EVQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0qbdTF6RRE+wJViRMySyywAAAAACAAAAAAAQZgAAAAEAACAAAABAAfmVbHx9T303mPHPFAq9SBPhtY2jqyKMO47gehJn7gAAAAAOgAAAAAIAACAAAAC/vwqS48feDg/IoswFpLUGDKo+efc16E9lnC6hbTlhg5AAAAAWPpde9SQqwAVNK7CKDzStkpe3fr3QmAJMI/mXeDxm4yjoP+s0mjySneC0ullqUsTGxOh3zWDw3yO4ldwvvMGbD/Nf8XRjny/puYiADRJe8mOl2SAuLgTASeoLIT0kEWDS9p+5+z9BVOdGn0ib5myWRVONrdcXEc43m/fs6Z7hPeKXuTuB3WmFh7eKaMWeeJZAAAAAu/fcSi9jp38jauINkccWagOqM2wLKcn1YGGf33P9FCdRP62aEW3FWg68FrTEv8hi9hdmxbr7Ez0hhAG7FPgbrw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="Package1.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Customer.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers />
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters />
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="Package1.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="Customer.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B704E477-F595-4B93-8205-1C1A81C7B46F}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{9EDF124A-4247-49FF-8610-0628ADB509CE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Customer</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">22</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{5342E685-82BE-45B3-99CE-F9F02E37A207}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B8DE840D-3729-44A4-8FFB-39C5D7D6705E}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -78,7 +78,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=EMANUELLAPTOP;Initial Catalog=NorthWind;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{7B4372F0-C52E-428D-8CBD-C40994B31B11}EMANUELLAPTOP.NorthWind;Auto Translate=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=ENVY;Initial Catalog=NorthWind;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Costumer-{3554260B-00BE-4D8C-A83E-E22563809F50}ENVY.NorthWind;Auto Translate=False;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -182,7 +182,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">EMANUELLAPTOP</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">ENVY</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -200,7 +200,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectByProxy">
+                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectByProxy">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -215,7 +215,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectionString">
+                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectionString">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -226,11 +226,11 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=EMANUELLAPTOP;Initial Catalog=NorthWind_Modelo_Estrella;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{B4F5AAC2-3BB0-4545-9332-8250B802BB97}EMANUELLAPTOP.NorthWind_Modelo_Estrella;Auto Translate=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=ENVY;Initial Catalog=NorthWind_Modelo_Estrella;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Costumer-{24A47CC6-D935-4BC5-BBCF-866322B373CF}ENVY.NorthWind_Modelo_Estrella;Auto Translate=False;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectRetryCount">
+                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectRetryCount">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -245,7 +245,7 @@
                     <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectRetryInterval">
+                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectRetryInterval">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -260,7 +260,7 @@
                     <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectUsingManagedIdentity">
+                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectUsingManagedIdentity">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -275,7 +275,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.InitialCatalog">
+                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.InitialCatalog">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -290,7 +290,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.Password">
+                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.Password">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -304,7 +304,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.RetainSameConnection">
+                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.RetainSameConnection">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -319,7 +319,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ServerName">
+                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ServerName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -330,11 +330,11 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">EMANUELLAPTOP</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">ENVY</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.UserName">
+                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.UserName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -373,7 +373,13 @@
         <LinkedAzureSSISIR />
         <LinkedAzureStorage />
         <RemoteExecutionFolder />
-        <ParameterConfigurationValues />
+        <ParameterConfigurationValues>
+          <ConfigurationSetting>
+            <Id>LastModifiedTime</Id>
+            <Name>LastModifiedTime</Name>
+            <Value xsi:type="xsd:dateTime">2026-10-21T18:02:48.8466811Z</Value>
+          </ConfigurationSetting>
+        </ParameterConfigurationValues>
       </Options>
     </Configuration>
   </Configurations>
