@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/21/2026 9:27:32 PM"
@@ -11,9 +11,1231 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionGUID="{A04FD1AC-C8F0-4F49-9136-1F5E4B02AB75}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{864D8555-98E8-4E73-A2A9-A4821D31361D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
-  <DTS:Executables />
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Source.NorthWind]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3BAB74D0-FA97-445E-81E3-7C52BC34EF9F}"
+      DTS:ObjectName="Source.NorthWind">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=desktop-n3btiam;Initial Catalog=NorthWind;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{3BAB74D0-FA97-445E-81E3-7C52BC34EF9F}desktop-n3btiam.NorthWind;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{97BA16DE-E3EF-43DF-83C2-442D993FF961}"
+      DTS:ObjectName="Target.NorthWind_Modelo_Estrella">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=desktop-n3btiam;Initial Catalog=NorthWind_Modelo_Estrella;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{97BA16DE-E3EF-43DF-83C2-442D993FF961}desktop-n3btiam.NorthWind_Modelo_Estrella;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{09C1F499-0653-4BB0-9069-591F0F100E81}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dbts">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{698FBF68-62FF-4AD2-B1FA-42D26A4C76CB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LastRowVersion">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clean Staging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{89CEA941-9F83-4413-B87F-725AD9214620}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clean Staging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{97BA16DE-E3EF-43DF-83C2-442D993FF961}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE staging.territory_region" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get DBTS"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{22A555BE-65AA-4AC9-AFF5-D1FA55C95ED3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get DBTS"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3BAB74D0-FA97-445E-81E3-7C52BC34EF9F}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[GetDatabaseRowVersion] "
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="DBTS"
+            SQLTask:DtsVariableName="User::dbts" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get Table RowVersion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{D09BE4BA-D8D0-4319-B96A-3FE3635D6A45}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Table RowVersion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{97BA16DE-E3EF-43DF-83C2-442D993FF961}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'TerritoryRegion'"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LastRowVersion"
+            SQLTask:DtsVariableName="User::LastRowVersion" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load TerritoryRegion"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{CF34A0B2-566A-4846-AB29-572470B2F45F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load TerritoryRegion"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load TerritoryRegion\Load no staging"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Load no staging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[DimTerritoryRegion]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load TerritoryRegion\Load no staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB].Columns[TerritoryID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="TerritoryID"
+                      externalMetadataColumnId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[TerritoryID]"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TerritoryID]" />
+                    <inputColumn
+                      refId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB].Columns[TerritoryDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TerritoryDescription"
+                      externalMetadataColumnId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[TerritoryDescription]"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TerritoryDescription]" />
+                    <inputColumn
+                      refId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB].Columns[RegionID]"
+                      cachedDataType="i4"
+                      cachedName="RegionID"
+                      externalMetadataColumnId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[RegionID]"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[RegionID]" />
+                    <inputColumn
+                      refId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB].Columns[RegionDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="RegionDescription"
+                      externalMetadataColumnId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[RegionDescription]"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[RegionDescription]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[TerritoryRegionKey]"
+                      dataType="i4"
+                      name="TerritoryRegionKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[TerritoryID]"
+                      dataType="wstr"
+                      length="20"
+                      name="TerritoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[TerritoryDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="TerritoryDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[RegionID]"
+                      dataType="i4"
+                      name="RegionID" />
+                    <externalMetadataColumn
+                      refId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[RegionDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="RegionDescription" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load TerritoryRegion\Load no staging.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Load no staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load TerritoryRegion\Load no staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Load no staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load TerritoryRegion\Load no staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load TerritoryRegion\Load staging"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Load staging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[staging].[territory_region]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load TerritoryRegion\Load staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB].Columns[TerritoryID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="TerritoryID"
+                      externalMetadataColumnId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[TerritoryID]"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TerritoryID]" />
+                    <inputColumn
+                      refId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB].Columns[TerritoryDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TerritoryDescription"
+                      externalMetadataColumnId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[TerritoryDescription]"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TerritoryDescription]" />
+                    <inputColumn
+                      refId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB].Columns[RegionID]"
+                      cachedDataType="i4"
+                      cachedName="RegionID"
+                      externalMetadataColumnId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[RegionID]"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[RegionID]" />
+                    <inputColumn
+                      refId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB].Columns[RegionDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="RegionDescription"
+                      externalMetadataColumnId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[RegionDescription]"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[RegionDescription]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[TerritoryID]"
+                      dataType="wstr"
+                      length="20"
+                      name="TerritoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[TerritoryDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="TerritoryDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[RegionID]"
+                      dataType="i4"
+                      name="RegionID" />
+                    <externalMetadataColumn
+                      refId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[RegionDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="RegionDescription" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load TerritoryRegion\Load staging.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Load staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load TerritoryRegion\Load staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Load staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load TerritoryRegion\Load staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load TerritoryRegion\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimTerritoryRegion]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimTerritoryRegion]) [refTable]
+where [refTable].[TerritoryID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TerritoryRegionKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TerritoryID" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TerritoryDescription" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RegionID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RegionDescription" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TerritoryID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load TerritoryRegion\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load TerritoryRegion\Lookup.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load TerritoryRegion\Lookup.Inputs[Entrada de búsqueda].Columns[TerritoryID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="TerritoryID"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TerritoryID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">TerritoryID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load TerritoryRegion\Lookup.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\Load TerritoryRegion\Lookup.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Lookup.Outputs[Salida de entradas coincidentes de búsqueda].Columns[TerritoryRegionKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\Load TerritoryRegion\Lookup.Outputs[Salida de entradas coincidentes de búsqueda].Columns[TerritoryRegionKey]"
+                      name="TerritoryRegionKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">TerritoryRegionKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load TerritoryRegion\Lookup.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\Load TerritoryRegion\Lookup.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load TerritoryRegion\Lookup.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\Load TerritoryRegion\Lookup.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Lookup.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load TerritoryRegion\Lookup.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Lookup.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load TerritoryRegion\Lookup.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load TerritoryRegion\Origen de OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    t.TerritoryID,
+    t.TerritoryDescription,
+    r.RegionID,
+    r.RegionDescription
+FROM dbo.Territories t
+INNER JOIN dbo.Region r ON t.RegionID = r.RegionID</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load TerritoryRegion\Origen de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source.NorthWind]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source.NorthWind]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TerritoryID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[TerritoryID]"
+                      length="20"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TerritoryID]"
+                      name="TerritoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TerritoryDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[TerritoryDescription]"
+                      length="50"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[TerritoryDescription]"
+                      name="TerritoryDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[RegionID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[RegionID]"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[RegionID]"
+                      name="RegionID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[RegionDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[RegionDescription]"
+                      length="50"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].Columns[RegionDescription]"
+                      name="RegionDescription"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[TerritoryID]"
+                      dataType="wstr"
+                      length="20"
+                      name="TerritoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[TerritoryDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="TerritoryDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[RegionID]"
+                      dataType="i4"
+                      name="RegionID" />
+                    <externalMetadataColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB].ExternalColumns[RegionDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="RegionDescription" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[TerritoryID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[TerritoryID]"
+                      name="TerritoryID" />
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[TerritoryDescription]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[TerritoryDescription]"
+                      name="TerritoryDescription" />
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[RegionID]"
+                      dataType="i4"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[RegionID]"
+                      name="RegionID" />
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[RegionDescription]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[RegionDescription]"
+                      name="RegionDescription" />
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load TerritoryRegion.Paths[Salida de entradas coincidentes de búsqueda]"
+              endId="Package\Load TerritoryRegion\Load staging.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\Load TerritoryRegion\Lookup.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\Load TerritoryRegion.Paths[Salida de entradas no coincidentes de búsqueda]"
+              endId="Package\Load TerritoryRegion\Load no staging.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de entradas no coincidentes de búsqueda"
+              startId="Package\Load TerritoryRegion\Lookup.Outputs[Salida de entradas no coincidentes de búsqueda]" />
+            <path
+              refId="Package\Load TerritoryRegion.Paths[Salida de origen de OLE DB]"
+              endId="Package\Load TerritoryRegion\Lookup.Inputs[Entrada de búsqueda]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Load TerritoryRegion\Origen de OLE DB.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Syn Dim Territory"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{8ECA3862-4D50-4CFE-8F3E-E6A9EF952B53}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Syn Dim Territory"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{97BA16DE-E3EF-43DF-83C2-442D993FF961}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[DW_MergeDimTerritoryRegion] " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Package Config"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{EDCD48B1-486A-443B-9DD2-5216B7220D69}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Package Config"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{97BA16DE-E3EF-43DF-83C2-442D993FF961}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName = 'Territory_Region' ,@newRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::dbts"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{B0EAAC75-1FD5-4B2A-B2BF-869F70E5C49E}"
+      DTS:From="Package\Get DBTS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Get Table RowVersion" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{E9F7BC96-1230-4776-B6CD-30952B39CD62}"
+      DTS:From="Package\Get Table RowVersion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\Clean Staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{0C25065F-2BB3-4866-9180-ED83AF3D72A1}"
+      DTS:From="Package\Clean Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 2"
+      DTS:To="Package\Load TerritoryRegion" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{944D3EEE-6387-41E6-B338-91A5BEBADB0E}"
+      DTS:From="Package\Load TerritoryRegion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 3"
+      DTS:To="Package\Syn Dim Territory" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{61E2D178-3D04-4CB7-B2E9-DB3C0BDFEBE1}"
+      DTS:From="Package\Syn Dim Territory"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 4"
+      DTS:To="Package\Update Package Config" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="125.333333333334,42.6666666666667"
+          Id="Package\Get DBTS"
+          TopLeft="214.999990388751,32.4999984502793" />
+        <NodeLayout
+          Size="184,42.6666666666667"
+          Id="Package\Get Table RowVersion"
+          TopLeft="194.374991310761,112.449994637966" />
+        <NodeLayout
+          Size="144,42.6666666666667"
+          Id="Package\Clean Staging"
+          TopLeft="206.249990779907,199.549990484715" />
+        <NodeLayout
+          Size="178.666666666667,42.6666666666667"
+          Id="Package\Load TerritoryRegion"
+          TopLeft="189.999991506338,292.499986052514" />
+        <NodeLayout
+          Size="162.666666666667,42.6666666666667"
+          Id="Package\Syn Dim Territory"
+          TopLeft="193.7499913387,364.449983479977" />
+        <NodeLayout
+          Size="188,42.6666666666667"
+          Id="Package\Update Package Config"
+          TopLeft="179.999991953373,447.599984378815" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="277.666657055418,75.1666651169459">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.70833425534266,37.2833295210204"
+              Start="0,0"
+              End="8.70833425534266,29.7833295210204">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.6416647605102" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.6416647605102"
+                    Point2="0,18.6416647605102"
+                    Point3="4,18.6416647605102" />
+                  <mssgle:LineSegment
+                    End="4.70833425534266,18.6416647605102" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.70833425534266,18.6416647605102"
+                    Point2="8.70833425534266,18.6416647605102"
+                    Point3="8.70833425534266,22.6416647605102" />
+                  <mssgle:LineSegment
+                    End="8.70833425534266,29.7833295210204" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="286.374991310761,155.116661304633">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.12500053085387,44.4333291800818"
+              Start="0,0"
+              End="-8.12500053085387,36.9333291800818">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.2166645900409" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.2166645900409"
+                    Point2="0,22.2166645900409"
+                    Point3="-4,22.2166645900409" />
+                  <mssgle:LineSegment
+                    End="-4.12500053085387,22.2166645900409" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.12500053085387,22.2166645900409"
+                    Point2="-8.12500053085387,22.2166645900409"
+                    Point3="-8.12500053085387,26.2166645900409" />
+                  <mssgle:LineSegment
+                    End="-8.12500053085387,36.9333291800818" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="278.791657809789,242.216657151382">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.2833289011321"
+              Start="0,0"
+              End="0,42.7833289011321">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.7833289011321" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="277.208324755853,335.16665271918">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.2833307607969"
+              Start="0,0"
+              End="0,21.7833307607969">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.7833307607969" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 4]"
+          TopLeft="274.541658312703,407.116650146644">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.4833342321714"
+              Start="0,0"
+              End="0,32.9833342321714">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.9833342321714" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load TerritoryRegion">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Load TerritoryRegion\Origen de OLE DB"
+          TopLeft="228.124989802018,32.4999984502793" />
+        <NodeLayout
+          Size="113.333333333334,42.6666666666667"
+          Id="Package\Load TerritoryRegion\Lookup"
+          TopLeft="244.374989075587,125.449994018078" />
+        <EdgeLayout
+          Id="Package\Load TerritoryRegion.Paths[Salida de origen de OLE DB]"
+          TopLeft="310.791656468685,75.1666651169459">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.75000072643161,50.2833289011321"
+              Start="0,0"
+              End="-9.75000072643161,42.7833289011321">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1416644505661" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.1416644505661"
+                    Point2="0,25.1416644505661"
+                    Point3="-4,25.1416644505661" />
+                  <mssgle:LineSegment
+                    End="-5.75000072643161,25.1416644505661" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.75000072643161,25.1416644505661"
+                    Point2="-9.75000072643161,25.1416644505661"
+                    Point3="-9.75000072643161,29.1416644505661" />
+                  <mssgle:LineSegment
+                    End="-9.75000072643161,42.7833289011321" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="140,42.6666666666667"
+          Id="Package\Load TerritoryRegion\Load staging"
+          TopLeft="99.9999955296518,226.849989182949" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Load TerritoryRegion\Load no staging"
+          TopLeft="469.999978989363,227.499989151955" />
+        <EdgeLayout
+          Id="Package\Load TerritoryRegion.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="283.486100186698,168.116660684745">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-113.486104657046,58.7333284982047"
+              Start="0,0"
+              End="-113.486104657046,51.2333284982047">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.9839114052994" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.9839114052994"
+                    Point2="0,23.9839114052994"
+                    Point3="-4,23.9839114052994" />
+                  <mssgle:LineSegment
+                    End="-109.486104657046,23.9839114052994" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-109.486104657046,23.9839114052994"
+                    Point2="-113.486104657046,23.9839114052994"
+                    Point3="-113.486104657046,27.9839114052994" />
+                  <mssgle:LineSegment
+                    End="-113.486104657046,51.2333284982047" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-156.562075766023,28.9839114052994,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load TerritoryRegion.Paths[Salida de entradas no coincidentes de búsqueda]"
+          TopLeft="318.597211297809,168.116660684745">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="228.736101024888,59.3833284672103"
+              Start="0,0"
+              End="228.736101024888,51.8833284672103">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2493406269815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2493406269815"
+                    Point2="0,24.2493406269815"
+                    Point3="4,24.2493406269815" />
+                  <mssgle:LineSegment
+                    End="224.736101024888,24.2493406269815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="224.736101024888,24.2493406269815"
+                    Point2="228.736101024888,24.2493406269815"
+                    Point3="228.736101024888,28.2493406269815" />
+                  <mssgle:LineSegment
+                    End="228.736101024888,51.8833284672103" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="7.479027074944,29.2493406269815,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load TerritoryRegion\Origen de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load TerritoryRegion\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimTerritoryRegion]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load TerritoryRegion\Load staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load TerritoryRegion\Load no staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

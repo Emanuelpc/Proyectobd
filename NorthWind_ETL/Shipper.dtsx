@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Shipper"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{63BB2782-A64F-49E9-AB79-E43278A189B0}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{98816BED-42F9-47EC-8D50-48F96A748DAB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -137,135 +137,6 @@
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\Load Shipper\Destino de OLE DB"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
-              description="Destino de OLE DB"
-              name="Destino de OLE DB"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[DimShipper]</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="Comando SQL para ejecutar."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Load Shipper\Destino de OLE DB.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
-                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
-                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Load Shipper\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
-                  errorOrTruncationOperation="Insertar"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="Entrada de destino de OLE DB">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Shipper\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ShipperID]"
-                      cachedDataType="i4"
-                      cachedName="ShipperID"
-                      externalMetadataColumnId="Package\Load Shipper\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipperID]"
-                      lineageId="Package\Load Shipper\Get Row from shipper.Outputs[Salida de origen de OLE DB].Columns[ShipperID]" />
-                    <inputColumn
-                      refId="Package\Load Shipper\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[CompanyName]"
-                      cachedDataType="wstr"
-                      cachedLength="40"
-                      cachedName="CompanyName"
-                      externalMetadataColumnId="Package\Load Shipper\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[CompanyName]"
-                      lineageId="Package\Load Shipper\Get Row from shipper.Outputs[Salida de origen de OLE DB].Columns[CompanyName]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Load Shipper\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipperKey]"
-                      dataType="i4"
-                      name="ShipperKey" />
-                    <externalMetadataColumn
-                      refId="Package\Load Shipper\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipperID]"
-                      dataType="i4"
-                      name="ShipperID" />
-                    <externalMetadataColumn
-                      refId="Package\Load Shipper\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[CompanyName]"
-                      dataType="wstr"
-                      length="40"
-                      name="CompanyName" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Shipper\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de destino de OLE DB"
-                  synchronousInputId="Package\Load Shipper\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Shipper\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Shipper\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Shipper\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Shipper\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\Load Shipper\Get Row from shipper"
               componentClassID="Microsoft.OLEDBSource"
@@ -407,6 +278,135 @@
                       refId="Package\Load Shipper\Get Row from shipper.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Load Shipper\Get Row from shipper.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Shipper\Load no staging"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Load no staging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[DimShipper]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Shipper\Load no staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Shipper\Load no staging.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Shipper\Load no staging.Inputs[Entrada de destino de OLE DB].Columns[ShipperID]"
+                      cachedDataType="i4"
+                      cachedName="ShipperID"
+                      externalMetadataColumnId="Package\Load Shipper\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipperID]"
+                      lineageId="Package\Load Shipper\Get Row from shipper.Outputs[Salida de origen de OLE DB].Columns[ShipperID]" />
+                    <inputColumn
+                      refId="Package\Load Shipper\Load no staging.Inputs[Entrada de destino de OLE DB].Columns[CompanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CompanyName"
+                      externalMetadataColumnId="Package\Load Shipper\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CompanyName]"
+                      lineageId="Package\Load Shipper\Get Row from shipper.Outputs[Salida de origen de OLE DB].Columns[CompanyName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Shipper\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipperKey]"
+                      dataType="i4"
+                      name="ShipperKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipper\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipperID]"
+                      dataType="i4"
+                      name="ShipperID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Shipper\Load no staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CompanyName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CompanyName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Shipper\Load no staging.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Load Shipper\Load no staging.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Shipper\Load no staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipper\Load no staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Shipper\Load no staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Shipper\Load no staging.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -705,7 +705,7 @@ where [refTable].[ShipperID] = ?</property>
               startId="Package\Load Shipper\Lookup.Outputs[Salida de entradas coincidentes de búsqueda]" />
             <path
               refId="Package\Load Shipper.Paths[Salida de entradas no coincidentes de búsqueda]"
-              endId="Package\Load Shipper\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+              endId="Package\Load Shipper\Load no staging.Inputs[Entrada de destino de OLE DB]"
               name="Salida de entradas no coincidentes de búsqueda"
               startId="Package\Load Shipper\Lookup.Outputs[Salida de entradas no coincidentes de búsqueda]" />
             <path
@@ -1050,8 +1050,8 @@ where [refTable].[ShipperID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="169.333333333334,42.6666666666667"
-          Id="Package\Load Shipper\Destino de OLE DB"
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Load Shipper\Load no staging"
           TopLeft="458.749979492278,266.199987974167" />
         <EdgeLayout
           Id="Package\Load Shipper.Paths[Salida de entradas no coincidentes de búsqueda]"
@@ -1059,9 +1059,9 @@ where [refTable].[ShipperID] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="248.569433799428,58.4333291800819"
+              EndConnector="241.236100466094,58.4333291800819"
               Start="0,0"
-              End="248.569433799428,50.9333291800819">
+              End="241.236100466094,50.9333291800819">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -1072,20 +1072,20 @@ where [refTable].[ShipperID] = ?</property>
                     Point2="0,23.8614058832817"
                     Point3="4,23.8614058832817" />
                   <mssgle:LineSegment
-                    End="244.569433799428,23.8614058832817" />
+                    End="237.236100466094,23.8614058832817" />
                   <mssgle:CubicBezierSegment
-                    Point1="244.569433799428,23.8614058832817"
-                    Point2="248.569433799428,23.8614058832817"
-                    Point3="248.569433799428,27.8614058832817" />
+                    Point1="237.236100466094,23.8614058832817"
+                    Point2="241.236100466094,23.8614058832817"
+                    Point3="241.236100466094,27.8614058832817" />
                   <mssgle:LineSegment
-                    End="248.569433799428,50.9333291800819" />
+                    End="241.236100466094,50.9333291800819" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="17.3956934622139,28.8614058832817,213.778046875,12.1953125"
+              BoundingBox="13.7290267955472,28.8614058832817,213.778046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1137,7 +1137,7 @@ where [refTable].[ShipperID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Shipper\Destino de OLE DB">
+    design-time-name="Package\Load Shipper\Load no staging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
