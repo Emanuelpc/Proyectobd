@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">EMANUELLAPTOP</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMjYclw1ym0aEw/PG1x1FJAAAAAACAAAAAAAQZgAAAAEAACAAAAAKErwZ5tQyx4NXo60F1a0sO3fsx/kmhHzNDn7EIw4c4wAAAAAOgAAAAAIAACAAAAAXvtDaQLJmKFtxY6rcObRc0JesHDPRa11db1ko2/3Z7JAAAAAORMBDLNNWDWhyH6gc2lFUcsO5N7pwem+cKb9BHvHVljqlKYUaVY06J5i0wsUkudHdBZl/Sb+5RC0Dgvt+PD0Q5WfOLrOG/Md5iVpKaDuTYI4OEEVzBSM671UJ+R1h2ID6RW+zPhljrkxmoyL71G6PaQkotSEEi7qolV0357K1LTH4QQ2lfoBTS7RWoqZw1ppAAAAAsjnLtHwHwcBlWHsevhEj66GSY0G4NaAdRxGDRQkoIL3VOyEVqT03IbEJGRsk8BvR/k0vuUyXdYe2ZFFsmZMrZQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0qbdTF6RRE+wJViRMySyywAAAAACAAAAAAAQZgAAAAEAACAAAADM9C3A4bK34Qj79rmpFL9zcBsrC6F0sX90HEPrisAVBwAAAAAOgAAAAAIAACAAAACPyayB0f5q1AG5e34uTjlxo2f93MZHPe3twWQGMlnT65AAAAA0+L/GXFlwvBF++bBAJPvB5ppjpgb57o5NbIr6V3iTYzag1EAIpGNdz5aRduYwhT2lD5cW9uRYJMsHygHWOeqZLNo70fUXYuyb38ijvyjFKzui6cfTvqNSKnIfMOgro6TqJlEeMdj+P2nnEzxI4ts3mlgqw5tqPdTCdkHGaT/vIOy8gcZIIwXlZ+Ldqxw+HHJAAAAAC61TwCif+auy5w8DykWPMURH+cfabpDq8MOVRWnvvdWbFSBDV2UkzB/awLbU9IAgQvCJRH6Y2NTkGTAsTYl4ow==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -45,10 +45,10 @@
                 <SSIS:Property SSIS:Name="Name">Customer</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">25</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">26</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{28F37FA0-D123-4935-99D3-5E8B1C93EB2A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{5B6A95E9-D6D4-4918-8EC8-187F26F1C90D}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -203,7 +203,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectByProxy">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectByProxy">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -218,7 +218,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectionString">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectionString">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -233,7 +233,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectRetryCount">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectRetryCount">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -248,7 +248,7 @@
                     <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectRetryInterval">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectRetryInterval">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -263,7 +263,7 @@
                     <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectUsingManagedIdentity">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectUsingManagedIdentity">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -278,7 +278,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.InitialCatalog">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.InitialCatalog">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -293,7 +293,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.Password">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.Password">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -307,7 +307,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.RetainSameConnection">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.RetainSameConnection">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -322,7 +322,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ServerName">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ServerName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -337,7 +337,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.UserName">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.UserName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -673,10 +673,10 @@
                 <SSIS:Property SSIS:Name="Name">Employee</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">45</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">46</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6C35DA6E-C7F7-48CB-9EFB-655D7C4EBA7E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{636E75DB-F1EF-4469-A8D1-E96B37102EEA}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -831,7 +831,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectByProxy">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectByProxy">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -846,7 +846,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectionString">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectionString">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -861,7 +861,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectRetryCount">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectRetryCount">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -876,7 +876,7 @@
                     <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectRetryInterval">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectRetryInterval">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -891,7 +891,7 @@
                     <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ConnectUsingManagedIdentity">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ConnectUsingManagedIdentity">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -906,7 +906,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.InitialCatalog">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.InitialCatalog">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -921,7 +921,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.Password">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.Password">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -935,7 +935,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.RetainSameConnection">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.RetainSameConnection">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -950,7 +950,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.ServerName">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.ServerName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -965,7 +965,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.Tarjet.NorthWind_Modelo_Estrella.UserName">
+                <SSIS:Parameter SSIS:Name="CM.Target.NorthWind_Modelo_Estrella.UserName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>

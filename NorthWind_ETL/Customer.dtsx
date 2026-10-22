@@ -11,8 +11,8 @@
   DTS:LocaleID="16394"
   DTS:ObjectName="Customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{28F37FA0-D123-4935-99D3-5E8B1C93EB2A}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{5B6A95E9-D6D4-4918-8EC8-187F26F1C90D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,10 +29,10 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
+      DTS:refId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{24A47CC6-D935-4BC5-BBCF-866322B373CF}"
-      DTS:ObjectName="Tarjet.NorthWind_Modelo_Estrella">
+      DTS:ObjectName="Target.NorthWind_Modelo_Estrella">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
@@ -537,8 +537,8 @@
               <connections>
                 <connection
                   refId="Package\Load Customers\Load Dim Customer.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
-                  connectionManagerRefId="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
+                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -680,8 +680,8 @@
               <connections>
                 <connection
                   refId="Package\Load Customers\Load Staging.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
-                  connectionManagerRefId="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
+                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -830,8 +830,8 @@ where [refTable].[CustomerID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Customers\Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
-                  connectionManagerRefId="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
+                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>

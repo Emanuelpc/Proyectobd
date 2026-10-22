@@ -11,8 +11,8 @@
   DTS:LocaleID="16394"
   DTS:ObjectName="Employee"
   DTS:PackageType="5"
-  DTS:VersionBuild="45"
-  DTS:VersionGUID="{6C35DA6E-C7F7-48CB-9EFB-655D7C4EBA7E}">
+  DTS:VersionBuild="46"
+  DTS:VersionGUID="{636E75DB-F1EF-4469-A8D1-E96B37102EEA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,10 +29,10 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
+      DTS:refId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{3AF2E2A5-78BE-418B-B16C-100BC9C059EE}"
-      DTS:ObjectName="Tarjet.NorthWind_Modelo_Estrella">
+      DTS:ObjectName="Target.NorthWind_Modelo_Estrella">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
@@ -669,8 +669,8 @@
               <connections>
                 <connection
                   refId="Package\Load Employees\Load Dim Employee.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
-                  connectionManagerRefId="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
+                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -822,8 +822,8 @@
               <connections>
                 <connection
                   refId="Package\Load Employees\Load Staging.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
-                  connectionManagerRefId="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
+                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -982,8 +982,8 @@ where [refTable].[EmployeeID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Load Employees\Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
-                  connectionManagerRefId="Package.ConnectionManagers[Tarjet.NorthWind_Modelo_Estrella]"
+                  connectionManagerID="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target.NorthWind_Modelo_Estrella]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -1211,6 +1211,22 @@ where [refTable].[EmployeeID] = ?</property>
           Size="182.4,41.6"
           Id="Package\Get Table RowVersion"
           TopLeft="184.28571467801,110.117646962301" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\Load Employees"
+          TopLeft="196.428571846716,276.058823287435" />
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\Staging clean-up"
+          TopLeft="201.42857185736,196.52941159244" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Sync Dim Employee"
+          TopLeft="181.428571814785,358.79999974931" />
+        <NodeLayout
+          Size="169.6,41.6"
+          Id="Package\Update Package config"
+          TopLeft="187.857143257041,435.882352559109" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="276.50714325172,79.2176470306712">
@@ -1233,10 +1249,6 @@ where [refTable].[EmployeeID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="157.6,41.6"
-          Id="Package\Staging clean-up"
-          TopLeft="201.42857185736,196.52941159244" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
           TopLeft="277.857143267685,151.717646962301">
@@ -1259,10 +1271,6 @@ where [refTable].[EmployeeID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="154.4,41.6"
-          Id="Package\Load Employees"
-          TopLeft="196.428571846716,276.058823287435" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
           TopLeft="276.928571852038,238.12941159244">
@@ -1285,10 +1293,6 @@ where [refTable].[EmployeeID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Sync Dim Employee"
-          TopLeft="181.428571814785,358.79999974931" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
           TopLeft="270.328571830751,317.658823287435">
@@ -1311,10 +1315,6 @@ where [refTable].[EmployeeID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="169.6,41.6"
-          Id="Package\Update Package config"
-          TopLeft="187.857143257041,435.882352559109" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 4]"
           TopLeft="269.842857535913,400.39999974931">
@@ -1459,37 +1459,6 @@ where [refTable].[EmployeeID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Employees\Get Rows From Employee">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Employees\Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimEmployee]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Load Employees\Load Staging">
     <Properties>
       <Property>
@@ -1499,6 +1468,37 @@ where [refTable].[EmployeeID] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Employees\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimEmployee]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Employees\Get Rows From Employee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
