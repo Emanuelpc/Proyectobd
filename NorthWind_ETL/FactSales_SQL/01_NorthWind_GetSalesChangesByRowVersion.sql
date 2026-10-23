@@ -1,5 +1,5 @@
 -- Ejecutar en la base: NorthWind (origen OLTP)
--- Origen del paquete FactSales. Sigue el mismo patron que GetProductChangesByRowVersion:
+-- Origen del paquete FactSales. Mismo patron que GetProductChangesByRowVersion.
 -- devuelve las lineas de venta nuevas o modificadas entre @startRow y @endRow.
 -- Territorio (opcion A): un territorio por empleado, el de menor TerritoryID.
 CREATE OR ALTER PROCEDURE [dbo].[GetSalesChangesByRowVersion]
